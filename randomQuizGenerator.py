@@ -22,26 +22,26 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             'South Carolina': 'Columbia', 'South Dakota': 'Pierre', 'Tennessee':
             'Nashville', 'Texas': 'Austin', 'Utah': 'Salt Lake City', 'Vermont':
             'Montpelier', 'Virginia': 'Richmond', 'Washington': 'Olympia', 'West Virginia': 
-            'Charleston', 'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'
+            'Charleston', 'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'}
 
 
-os.makedirs('./quizzes', exist_ok = True)
-os.makedirs('./answers', exist_ok = True)
+os.makedirs("answers", exist_ok = True)
+os.makedirs("quizzes", exist_ok = True)
             
  
 for quizNum in range(5):
        # Creates the quiz and answer key files.
-       quizFile = open('./quizzes/capitalsquiz%s.txt' % (quizNum + 1), 'w')
-       answerKeyFile = open('./answers/capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')
+       quizFile = open(os.path.join('quizzes','capitalsquiz%s.txt' % (quizNum + 1)), 'w')
+       answerKeyFile = open(os.path.join('answers','capitalsquiz%s.txt' % (quizNum + 1)), 'w')
 
        # Writes out the header for the quiz.
        quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')
        quizFile.write((' ' * 20) + 'State Capitals Quiz (Form %s)' % (quizNum + 1))
        quizFile.write('\n\n')
 
-        # Shuffles the order of the states.
-        states = list(capitals.keys())
-        random.shuffle(states)
+       # Shuffles the order of the states.
+       states = list(capitals.keys())
+       random.shuffle(states)
 
        # Loops through all 50 states, making a question for each.
        for questionNum in range(50):
@@ -62,10 +62,11 @@ for quizNum in range(5):
               # Write the answer key to a file.
               answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
             
-       quizFile.close()
-       answerKeyFile.close()
+quizFile.close()
+answerKeyFile.close()
 
 
             
             
+
 
